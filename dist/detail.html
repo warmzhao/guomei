@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/register.css"/>
+		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/detail.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="js/zoom.js" type="text/javascript" charset="utf-8"></script>-->
+		<style type="text/css">
+			.product{
+				width: 990px;
+				height: 500px;
+				margin: 0 auto;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			img{
+				display: block;
+				border: none;
+			}
+			#zoomBox{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 400px;
+				height: 500px;
+				border: 1px solid #CECECE;
+			}
+			#midArea{
+				position: absolute;
+				width: 400px;
+				height: 400px;
+				overflow: hidden;
+			}
+			#midArea img{
+				width: 400px;
+				height: 400px;
+			}
+			#zoom{
+				display: none;
+				position: absolute;
+				width: 200px;
+				height: 200px;
+				background: yellow;
+				opacity: .5;
+				cursor: move;
+			}
+			#bigArea{
+				display: none;
+				position: absolute;
+				left: 400px;
+				top: -1px;
+				width: 400px;
+				height: 400px;
+				border: 1px solid #CECECE;
+				overflow: hidden;
+			}
+			#bigArea img{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 800px;
+				height: 800px;
+			}
+			#smallArea{
+				position: absolute;
+				top: 400px;
+				height: 80px;
+				padding: 10px;
+			}
+			#smallArea img{
+				float: left;
+				margin-left: 10px;
+				width: 80px;
+				height: 80px;
+			}
+			.goods-info {
+				width: 500px;
+				position: absolute;
+				top: 0;
+				right: 0px;
+				padding-top: 40px;
+			}
+			.goods-info h2 {
+				margin:15px 0;
+				font-size: 26px;
+				height: 60px;
+				line-height: 30px;
+				color: #f5004b;
+			}
+			.goods-info>strong {
+				display: block;
+				font-size: 18px;
+				color: #2875CC;
+				height: 50px;
+				line-height: 50px;
+			}
+			.goods-info p {
+				height: 50px;
+				line-height: 50px;
+				font-size: 16px;
+				color: #333;
+			}
+			.goods-info i {
+				display: block;
+				font-style: normal;
+				font-size: 20px;
+				color: #D7000F;
+				height: 50px;
+				line-height: 50px;
+			}
+			.add {
+				height: 50px;
+				line-height: 50px;
+			}
+			.add button {
+				width: 20px;
+				height: 20px;
+			}
+			.add .input {
+				outline: none;
+				width: 50px;
+			}
+			.add .addcart {
+				padding: 0 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="w990">
+			<div id="gome-head" class="wbox">
+				<div id="logo">
+					<a href="index.html">国美</a>
+				</div>
+			</div>
+			<div class="login-box">
+					<p class="login-title">
+						现在就去
+						<a href="cart.html">购物车</a>
+					</p>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		<div class="product">
+			
+		</div>
+		
+		<div class="w990 newRegister">
+			<div id="gome-foot">
+				<div id="gome-foot-box">
+					<ul class="foot_small_zdy_w">
+						<li><a href="#">国美集团</a></li>
+						<li><a href="#">国美集团</a></li>
+						<li><a href="#">国美集团</a></li>
+						<li><a href="#">国美集团</a></li>
+						<li>|</li>
+						<li><a href="#">国美集团</a></li>
+						<li><a href="#">国美集团</a></li>
+						<li><a href="#">国美集团</a></li>
+						<li><a href="#">国美集团</a></li>
+						<li><a href="#">国美集团</a></li>
+						<li><a href="#">国美集团</a></li>
+						<li>|</li>
+						<li><a href="#">国美集团</a></li>
+						<li><a href="#">国美集团</a></li>
+						<li><a href="#">国美集团</a></li>
+					</ul>
+					<p>
+						本公司游戏产品适合18岁以上成年人使用  违法和不良信息举报电话：021-39900132  
+						<a class="interDrug" href="">互联网药品信息服务资格证编号（沪）-经营性-2019-0006</a>
+					</p>
+					<p>
+						本公司游戏产品适合18岁以上成年人使用  违法和不良信息举报电话：021-39900132  
+						<a class="interDrug" href="">互联网药品信息服务资格证编号（沪）-经营性-2019-0006</a>
+					</p>
+					<p>
+						本公司游戏产品适合18岁以上成年人使用  违法和不良信息举报电话：021-39900132  
+						<a class="interDrug" href="">互联网药品信息服务资格证编号（沪）-经营性-2019-0006</a>
+					</p>
+					<p>
+						本公司游戏产品适合18岁以上成年人使用  违法和不良信息举报电话：021-39900132  
+						<a class="interDrug" href="">互联网药品信息服务资格证编号（沪）-经营性-2019-0006</a>
+					</p>
+					
+					<div class="gome-foot-credit">
+						<a href="#">
+							<i></i>
+							<b>经营性网站备案信息</b>
+						</a>
+						<a href="#">
+							<i></i>
+							<b>经营性网站备案信息</b>
+						</a>
+						<a href="#">
+							<i></i>
+							<b>经营性网站备案信息</b>
+						</a>
+						<a href="#">
+							<i></i>
+							<b>经营性网站备案信息</b>
+						</a>
+						<a href="#">
+							<i></i>
+							<b>经营性网站备案信息</b>
+						</a>
+						<a href="#">
+							<i></i>
+							<b>经营性网站备案信息</b>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+				/*var zoom = new Zoom();*/
+				
+		</script>
+	</body>
+</html>
