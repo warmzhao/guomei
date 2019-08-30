@@ -55,11 +55,17 @@
 		$(".input").val($val);
 	})
 	
+	var list = JSON.parse(localStorage.getItem("token"));
+	var token = list.token;
+	console.log(token);
+	
 	$(".addcart").click(function(){
-		$.get("http://47.104.244.134:8080/cartsave.do",{gid:id,token:"3"},function(data){
+		var val = $(".input").val();
+		for(let i = 0; i< val;i++){
+		$.get("http://47.104.244.134:8080/cartsave.do",{gid:id,token:token},function(data){
 			console.log(data);
 		})
-		
+		}
 		
 	})
 })

@@ -1,5 +1,9 @@
 
-	$.get("http://47.104.244.134:8080/cartlist.do",{token:"3"},function(data){
+	var list = JSON.parse(localStorage.getItem("token"));
+	var token = list.token;
+	console.log(token);
+
+	$.get("http://47.104.244.134:8080/cartlist.do",{token:token},function(data){
 		var str = '';
 		data.map(function(item){
 			//console.log(item)
@@ -17,7 +21,7 @@
 						<input type="button" class="sub" value="-"/>
 						<input class="input" type="text" value="${item.count}"/>
 						<input type="button" class="plus" value="+"/>
-						<strong>总价:${goods.price*item.count}</strong>
+						<strong class="totalPrice">总价:${goods.price*item.count}</strong>
 						<input class="btn" type="button" value="删除"/>
 						<a href="#">立即下单</a>
 					</div>
@@ -30,21 +34,70 @@
 			$(".list").html(str);
 			
 			
-				$(".sub").click(function(){
-					var val = $(".input").val();
-					val--;
-					if(val<=0){
-						val = 0;
+				
+				for (let i = 0; i < data.length; i++) {
+				//-sub
+				$(".sub").eq(i).click(function() {
+					$(".input").eq(i).val(parseInt($(".input").eq(i).val()) - 1);
+					if ($(".input").eq(i).val() <= 0) {
+						$(".input").eq(i).val(1);
 					}
-					$(".input").val(val);
+					var price = $(".input").eq(i).val() * data[i].goods.price;
+					$(".totalPrice").eq(i).text(price);
+					$.ajax({
+						type: "get",
+						url: "http://47.104.244.134:8080/cartupdate.do",
+						async: true,
+						data: {
+							id: data[i].id,
+							gid: data[i].gid,
+							num: "-1",
+							token: token
+						},
+						success: function() {}
+					})
 				})
-	
-				$(".plus").click(function(){
-					$val = $(".input").val();
-					$val++;
-					$(".input").val($val);
+				//plus
+				$(".plus").eq(i).click(function() {
+					$(".input").eq(i).val(parseInt($(".input").eq(i).val()) + 1);
+					var price = $(".input").eq(i).val() * data[i].goods.price;
+					$(".totalPrice").eq(i).text(price);
+					$.ajax({
+						type: "get",
+						url: "http://47.104.244.134:8080/cartupdate.do",
+						async: true,
+						data: {
+							id: data[i].id,
+							gid: data[i].gid,
+							num: "1",
+							token: token
+						},
+						success: function(){}
+					})
+				})
+				$(".input").eq(i).change(function() {
+					var price = $(".input").eq(i).val() * data[i].goods.price;
+					$(".totalPrice").eq(i).text(price);
+				})
+				//delete
+				$(".btn").eq(i).click(function() {
+					$(".btn").eq(i).parent().parent().remove();
+					$.ajax({
+						type: "get",
+						url: "http://47.104.244.134:8080/cartupdate.do",
+						async: true,
+						data: {
+							id: data[i].id,
+							gid: data[i].gid,
+							num: "0",
+							token: token
+						},
+						success: function() {}
+					})
 				})
 				
+			}
+		
 				$(".checkAll").prop("checked",true);
 				$.each($(".checkbox"),function(i){
 					$(this).prop("checked",true);
